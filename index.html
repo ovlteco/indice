@@ -4,197 +4,271 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Supervisión - Portal de Proveedores</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
+        /* --- ESTILOS GENERALES (Reemplazo de Tailwind) --- */
+        * {
+            box-sizing: border-box;
+        }
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #f3f4f6; /* Tailwind's gray-100 */
+            background-color: #f3f4f6;
+            margin: 0;
+            padding: 1.5rem; /* p-6 */
+            color: #1f2937;
         }
+        
+        /* Contenedor principal */
+        .container {
+            max-width: 72rem; /* max-w-6xl */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            margin-bottom: 3rem; /* mb-12 */
+        }
+        h1 {
+            font-size: 1.875rem; /* text-3xl */
+            font-weight: 700;
+            color: #1f2937; /* gray-800 */
+            margin: 0;
+        }
+        header p {
+            font-size: 1.125rem; /* text-lg */
+            color: #6b7280; /* gray-500 */
+            margin-top: 0.5rem;
+        }
+
+        /* Grid Layout Responsivo */
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr; /* Móvil por defecto */
+            gap: 1.5rem; /* gap-6 */
+        }
+
+        /* Media Queries para simular sm, md, lg de Tailwind */
+        @media (min-width: 640px) {
+            body { padding: 2.5rem; } /* sm:p-10 */
+            h1 { font-size: 2.25rem; } /* sm:text-4xl */
+            .grid-container { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (min-width: 768px) {
+            .grid-container { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (min-width: 1024px) {
+            .grid-container { grid-template-columns: repeat(4, 1fr); }
+        }
+
+        /* --- TUS ESTILOS DE TARJETA (Mejorados) --- */
         .card {
             background-color: white;
-            border-radius: 0.75rem; /* rounded-xl */
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); /* shadow-lg */
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            padding: 1.5rem; /* p-6 */
+            text-decoration: none; /* Quitar subrayado de enlace */
+            border: 1px solid transparent;
         }
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); /* shadow-xl */
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            border-color: #e5e7eb;
         }
+        .card-content h2 {
+            font-size: 1.25rem; /* text-xl */
+            font-weight: 700;
+            color: #1f2937; /* gray-800 */
+            margin: 0;
+        }
+        .card-footer {
+            font-size: 0.875rem; /* text-sm */
+            color: #9ca3af; /* gray-400 */
+            margin-top: 1rem;
+        }
+
+        /* Iconos */
         .card-icon {
             width: 48px;
             height: 48px;
-            border-radius: 0.5rem; /* rounded-lg */
+            border-radius: 0.5rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #eef2ff; /* indigo-100 */
-            color: #4f46e5; /* indigo-600 */
+            background-color: #eef2ff;
+            color: #4f46e5;
+            margin-bottom: 1rem; /* mb-4 */
+        }
+        /* Ajuste para el SVG dentro del icono */
+        .card-icon svg {
+            width: 24px;
+            height: 24px;
         }
     </style>
 </head>
-<body class="p-6 sm:p-10">
-    <div class="max-w-6xl mx-auto">
+<body>
+    <div class="container">
         
-        <header class="text-center mb-12">
-            <h1 class="text-3xl sm:text-4xl font-bold text-gray-800">Panel de Supervisión</h1>
-            <p class="text-lg text-gray-500 mt-2">Acceso a Portales de Proveedores</p>
+        <header>
+            <h1>Panel de Supervisión</h1>
+            <p>Acceso a Portales de Proveedores</p>
         </header>
 
-        <main class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <main class="grid-container">
             
-            <a href="https://ovlteco.github.io/gaes/" target="_blank" class="card p-6">
-                <div>
-                    <div class="card-icon mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+            <a href="https://ovlteco.github.io/gaes/" target="_blank" class="card">
+                <div class="card-content">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
                     </div>
-                    <h2 class="text-xl font-bold text-gray-800">GAES</h2>
+                    <h2>GAES</h2>
                 </div>
-                <p class="text-sm text-gray-400 mt-4">Abrir portal</p>
+                <p class="card-footer">Abrir portal</p>
             </a>
 
-            <a href="https://ovlteco.github.io/tarig/" target="_blank" class="card p-6">
-                <div>
-                    <div class="card-icon mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+            <a href="https://ovlteco.github.io/tarig/" target="_blank" class="card">
+                <div class="card-content">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
                     </div>
-                    <h2 class="text-xl font-bold text-gray-800">TARIG</h2>
+                    <h2>TARIG</h2>
                 </div>
-                <p class="text-sm text-gray-400 mt-4">Abrir portal</p>
+                <p class="card-footer">Abrir portal</p>
             </a>
 
-            <a href="https://ovlteco.github.io/opticalpower/" target="_blank" class="card p-6">
-                <div>
-                    <div class="card-icon mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+            <a href="https://ovlteco.github.io/opticalpower/" target="_blank" class="card">
+                <div class="card-content">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
                     </div>
-                    <h2 class="text-xl font-bold text-gray-800">OPTICALPOWER</h2>
+                    <h2>OPTICALPOWER</h2>
                 </div>
-                <p class="text-sm text-gray-400 mt-4">Abrir portal</p>
+                <p class="card-footer">Abrir portal</p>
             </a>
 
-            <a href="https://ovlteco.github.io/300net/" target="_blank" class="card p-6">
-                <div>
-                    <div class="card-icon mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+            <a href="https://ovlteco.github.io/300net/" target="_blank" class="card">
+                <div class="card-content">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
                     </div>
-                    <h2 class="text-xl font-bold text-gray-800">300NET</h2>
+                    <h2>300NET</h2>
                 </div>
-                <p class="text-sm text-gray-400 mt-4">Abrir portal</p>
+                <p class="card-footer">Abrir portal</p>
             </a>
 
-            <a href="https://ovlteco.github.io/fnet/" target="_blank" class="card p-6">
-                <div>
-                    <div class="card-icon mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+            <a href="https://ovlteco.github.io/fnet/" target="_blank" class="card">
+                <div class="card-content">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
                     </div>
-                    <h2 class="text-xl font-bold text-gray-800">FNET</h2>
+                    <h2>FNET</h2>
                 </div>
-                <p class="text-sm text-gray-400 mt-4">Abrir portal</p>
+                <p class="card-footer">Abrir portal</p>
             </a>
 
-            <a href="https://ovlteco.github.io/internorte/" target="_blank" class="card p-6">
-                <div>
-                    <div class="card-icon mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+            <a href="https://ovlteco.github.io/internorte/" target="_blank" class="card">
+                <div class="card-content">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
                     </div>
-                    <h2 class="text-xl font-bold text-gray-800">INTERNORTE</h2>
+                    <h2>INTERNORTE</h2>
                 </div>
-                <p class="text-sm text-gray-400 mt-4">Abrir portal</p>
+                <p class="card-footer">Abrir portal</p>
             </a>
 
-            <a href="https://ovlteco.github.io/lavtel/" target="_blank" class="card p-6">
-                <div>
-                    <div class="card-icon mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+            <a href="https://ovlteco.github.io/lavtel/" target="_blank" class="card">
+                <div class="card-content">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
                     </div>
-                    <h2 class="text-xl font-bold text-gray-800">LAVTEL</h2>
+                    <h2>LAVTEL</h2>
                 </div>
-                <p class="text-sm text-gray-400 mt-4">Abrir portal</p>
+                <p class="card-footer">Abrir portal</p>
             </a>
 
-            <a href="https://ovlteco.github.io/cainler/" target="_blank" class="card p-6">
-                <div>
-                    <div class="card-icon mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+            <a href="https://ovlteco.github.io/cainler/" target="_blank" class="card">
+                <div class="card-content">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
                     </div>
-                    <h2 class="text-xl font-bold text-gray-800">CAINLER</h2>
+                    <h2>CAINLER</h2>
                 </div>
-                <p class="text-sm text-gray-400 mt-4">Abrir portal</p>
+                <p class="card-footer">Abrir portal</p>
             </a>
 
-            <a href="https://ovlteco.github.io/xanten/" target="_blank" class="card p-6">
-                <div>
-                    <div class="card-icon mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+            <a href="https://ovlteco.github.io/xanten/" target="_blank" class="card">
+                <div class="card-content">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
                     </div>
-                    <h2 class="text-xl font-bold text-gray-800">XANTEN</h2>
+                    <h2>XANTEN</h2>
                 </div>
-                <p class="text-sm text-gray-400 mt-4">Abrir portal</p>
+                <p class="card-footer">Abrir portal</p>
             </a>
 
-            <a href="https://ovlteco.github.io/workvision/" target="_blank" class="card p-6">
-                <div>
-                    <div class="card-icon mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+            <a href="https://ovlteco.github.io/workvision/" target="_blank" class="card">
+                <div class="card-content">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
                     </div>
-                    <h2 class="text-xl font-bold text-gray-800">WORKVISION</h2>
+                    <h2>WORKVISION</h2>
                 </div>
-                <p class="text-sm text-gray-400 mt-4">Abrir portal</p>
+                <p class="card-footer">Abrir portal</p>
             </a>
 
-            <a href="https://ovlteco.github.io/fibraytel/" target="_blank" class="card p-6">
-                <div>
-                    <div class="card-icon mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+            <a href="https://ovlteco.github.io/fibraytel/" target="_blank" class="card">
+                <div class="card-content">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
                     </div>
-                    <h2 class="text-xl font-bold text-gray-800">FIBRAYTEL</h2>
+                    <h2>FIBRAYTEL</h2>
                 </div>
-                <p class="text-sm text-gray-400 mt-4">Abrir portal</p>
+                <p class="card-footer">Abrir portal</p>
             </a>
 
-            <a href="https://ovlteco.github.io/gmsystem/" target="_blank" class="card p-6">
-                <div>
-                    <div class="card-icon mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+            <a href="https://ovlteco.github.io/gmsystem/" target="_blank" class="card">
+                <div class="card-content">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
                     </div>
-                    <h2 class="text-xl font-bold text-gray-800">GMSYSTEM</h2>
+                    <h2>GMSYSTEM</h2>
                 </div>
-                <p class="text-sm text-gray-400 mt-4">Abrir portal</p>
+                <p class="card-footer">Abrir portal</p>
             </a>
 
-            <a href="https://ovlteco.github.io/intersa" target="_blank" class="card p-6">
-                <div>
-                    <div class="card-icon mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+            <a href="https://ovlteco.github.io/intersa" target="_blank" class="card">
+                <div class="card-content">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
                     </div>
-                    <h2 class="text-xl font-bold text-gray-800">INTERSA</h2>
+                    <h2>INTERSA</h2>
                 </div>
-                <p class="text-sm text-gray-400 mt-4">Abrir portal</p>
+                <p class="card-footer">Abrir portal</p>
             </a>
 
-            <a href="https://ovlteco.github.io/zumaf" target="_blank" class="card p-6">
-                <div>
-                    <div class="card-icon mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+            <a href="https://ovlteco.github.io/zumaf" target="_blank" class="card">
+                <div class="card-content">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
                     </div>
-                    <h2 class="text-xl font-bold text-gray-800">ZUMAF</h2>
+                    <h2>ZUMAF</h2>
                 </div>
-                <p class="text-sm text-gray-400 mt-4">Abrir portal</p>
+                <p class="card-footer">Abrir portal</p>
             </a>
 
         </main>
 
-        <footer class="text-center mt-12 text-sm text-gray-500">
+        <footer style="text-align: center; margin-top: 3rem; color: #6b7280; font-size: 0.875rem;">
             <p>&copy; 2024 - Panel Centralizado</p>
         </footer>
 
     </div>
 </body>
-
 </html>
