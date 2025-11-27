@@ -1,32 +1,199 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal de Proveedores - Cierre de Obras</title>
+    <title>Panel de Supervisión - Portales de Proveedores</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f3f4f6; /* Tailwind's gray-100 */
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.75rem; /* rounded-xl */
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); /* shadow-lg */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); /* shadow-xl */
+        }
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 0.5rem; /* rounded-lg */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #eef2ff; /* indigo-100 */
+            color: #4f46e5; /* indigo-600 */
         }
     </style>
 </head>
-<body class="bg-gray-100 flex items-center justify-center min-h-screen">
-    <div class="bg-white shadow-lg rounded-xl p-8 max-w-md w-full text-center">
-        <header class="mb-8">
-            <h1 class="text-3xl font-bold text-gray-800">Sistema de Cierre de Obras</h1>
-            <p class="text-gray-500 mt-2">Seleccione un proveedor para continuar</p>
+<body class="p-6 sm:p-10">
+    <div class="max-w-6xl mx-auto">
+        
+        <header class="text-center mb-12">
+            <h1 class="text-3xl sm:text-4xl font-bold text-gray-800">Panel de Supervisión</h1>
+            <p class="text-lg text-gray-500 mt-2">Acceso a Portales de Proveedores</p>
         </header>
-        <main>
-            <ul class="space-y-3">
-                <li><a href="proveedores/gmsystem.html" class="block w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-lg">GM SYSTEM</a></li><li><a href="proveedores/lavtel.html" class="block w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-lg">LAVTEL</a></li><li><a href="proveedores/internorte.html" class="block w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-lg">INTERNORTE</a></li><li><a href="proveedores/fibraytel.html" class="block w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-lg">FIBRAYTEL</a></li><li><a href="proveedores/gaes.html" class="block w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-lg">GAES</a></li><li><a href="proveedores/intersa.html" class="block w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-lg">INTERSA</a></li><li><a href="proveedores/tarig.html" class="block w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-lg">TARIG</a></li><li><a href="proveedores/300net.html" class="block w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-lg">300NET</a></li><li><a href="proveedores/zumaf.html" class="block w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-lg">ZUMAF</a></li><li><a href="proveedores/cainler.html" class="block w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-lg">CAINLER</a></li><li><a href="proveedores/heisa.html" class="block w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-lg">HEISA</a></li><li><a href="proveedores/sinasignar.html" class="block w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-lg">SIN ASIGNAR</a></li><li><a href="proveedores/opticalpower.html" class="block w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-lg">OPTICAL POWER</a></li><li><a href="proveedores/workvision.html" class="block w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-lg">WORKVISION</a></li><li><a href="proveedores/fnet.html" class="block w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-lg">FNET</a></li>
-            </ul>
+
+        <main class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            
+            <a href="https://ovlteco.github.io/gaes/" target="_blank" class="card p-6">
+                <div>
+                    <div class="card-icon mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                    </div>
+                    <h2 class="text-xl font-bold text-gray-800">GAES</h2>
+                </div>
+                <p class="text-sm text-gray-400 mt-4">Abrir portal</p>
+            </a>
+
+            <a href="https://ovlteco.github.io/tarig/" target="_blank" class="card p-6">
+                <div>
+                    <div class="card-icon mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                    </div>
+                    <h2 class="text-xl font-bold text-gray-800">TARIG</h2>
+                </div>
+                <p class="text-sm text-gray-400 mt-4">Abrir portal</p>
+            </a>
+
+            <a href="https://ovlteco.github.io/opticalpower/" target="_blank" class="card p-6">
+                <div>
+                    <div class="card-icon mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                    </div>
+                    <h2 class="text-xl font-bold text-gray-800">OPTICALPOWER</h2>
+                </div>
+                <p class="text-sm text-gray-400 mt-4">Abrir portal</p>
+            </a>
+
+            <a href="https://ovlteco.github.io/300net/" target="_blank" class="card p-6">
+                <div>
+                    <div class="card-icon mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                    </div>
+                    <h2 class="text-xl font-bold text-gray-800">300NET</h2>
+                </div>
+                <p class="text-sm text-gray-400 mt-4">Abrir portal</p>
+            </a>
+
+            <a href="https://ovlteco.github.io/fnet/" target="_blank" class="card p-6">
+                <div>
+                    <div class="card-icon mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                    </div>
+                    <h2 class="text-xl font-bold text-gray-800">FNET</h2>
+                </div>
+                <p class="text-sm text-gray-400 mt-4">Abrir portal</p>
+            </a>
+
+            <a href="https://ovlteco.github.io/internorte/" target="_blank" class="card p-6">
+                <div>
+                    <div class="card-icon mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                    </div>
+                    <h2 class="text-xl font-bold text-gray-800">INTERNORTE</h2>
+                </div>
+                <p class="text-sm text-gray-400 mt-4">Abrir portal</p>
+            </a>
+
+            <a href="https://ovlteco.github.io/lavtel/" target="_blank" class="card p-6">
+                <div>
+                    <div class="card-icon mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                    </div>
+                    <h2 class="text-xl font-bold text-gray-800">LAVTEL</h2>
+                </div>
+                <p class="text-sm text-gray-400 mt-4">Abrir portal</p>
+            </a>
+
+            <a href="https://ovlteco.github.io/cainler/" target="_blank" class="card p-6">
+                <div>
+                    <div class="card-icon mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                    </div>
+                    <h2 class="text-xl font-bold text-gray-800">CAINLER</h2>
+                </div>
+                <p class="text-sm text-gray-400 mt-4">Abrir portal</p>
+            </a>
+
+            <a href="https://ovlteco.github.io/xanten/" target="_blank" class="card p-6">
+                <div>
+                    <div class="card-icon mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                    </div>
+                    <h2 class="text-xl font-bold text-gray-800">XANTEN</h2>
+                </div>
+                <p class="text-sm text-gray-400 mt-4">Abrir portal</p>
+            </a>
+
+            <a href="https://ovlteco.github.io/workvision/" target="_blank" class="card p-6">
+                <div>
+                    <div class="card-icon mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                    </div>
+                    <h2 class="text-xl font-bold text-gray-800">WORKVISION</h2>
+                </div>
+                <p class="text-sm text-gray-400 mt-4">Abrir portal</p>
+            </a>
+
+            <a href="https://ovlteco.github.io/fibraytel/" target="_blank" class="card p-6">
+                <div>
+                    <div class="card-icon mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                    </div>
+                    <h2 class="text-xl font-bold text-gray-800">FIBRAYTEL</h2>
+                </div>
+                <p class="text-sm text-gray-400 mt-4">Abrir portal</p>
+            </a>
+
+            <a href="https://ovlteco.github.io/gmsystem/" target="_blank" class="card p-6">
+                <div>
+                    <div class="card-icon mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                    </div>
+                    <h2 class="text-xl font-bold text-gray-800">GMSYSTEM</h2>
+                </div>
+                <p class="text-sm text-gray-400 mt-4">Abrir portal</p>
+            </a>
+
+            <a href="https://ovlteco.github.io/intersa" target="_blank" class="card p-6">
+                <div>
+                    <div class="card-icon mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                    </div>
+                    <h2 class="text-xl font-bold text-gray-800">INTERSA</h2>
+                </div>
+                <p class="text-sm text-gray-400 mt-4">Abrir portal</p>
+            </a>
+
+            <a href="https://ovlteco.github.io/zumaf" target="_blank" class="card p-6">
+                <div>
+                    <div class="card-icon mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                    </div>
+                    <h2 class="text-xl font-bold text-gray-800">ZUMAF</h2>
+                </div>
+                <p class="text-sm text-gray-400 mt-4">Abrir portal</p>
+            </a>
+
         </main>
-        <footer class="mt-8 text-sm text-gray-400">
-            <p>Generado automáticamente.</p>
+
+        <footer class="text-center mt-12 text-sm text-gray-500">
+            <p>&copy; 2024 - Panel Centralizado</p>
         </footer>
+
     </div>
 </body>
 </html>
