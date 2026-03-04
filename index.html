@@ -74,7 +74,7 @@
         </div>
 
         <footer class="text-center text-sm text-gray-500">
-            <p>Sistema generado automáticamente • 04/03/2026 11:41</p>
+            <p>Sistema generado automáticamente • 04/03/2026 13:23</p>
         </footer>
     </div>
 
@@ -133,9 +133,15 @@ const firebaseConfig = {
         }
         
         function updateGlobalStats() {
-            const centralFilter = document.getElementById('filterCentral').value;
-            const pdFilter = document.getElementById('filterPd').value;
-            const proveedorFilter = document.getElementById('filterProveedor').value;
+            // Si los elementos no existen, salir sin error
+            const centralFilterEl = document.getElementById('filterCentral');
+            const pdFilterEl = document.getElementById('filterPd');
+            const proveedorFilterEl = document.getElementById('filterProveedor');
+            if (!centralFilterEl || !pdFilterEl || !proveedorFilterEl) return;
+            
+            const centralFilter = centralFilterEl.value;
+            const pdFilter = pdFilterEl.value;
+            const proveedorFilter = proveedorFilterEl.value;
             
             const filtered = allData.filter(item => {
                 const matchCentral = !centralFilter || item.CENTRAL === centralFilter;
@@ -154,11 +160,18 @@ const firebaseConfig = {
             const pending = total - completed;
             const progress = total > 0 ? Math.round((completed / total) * 100) : 0;
             
-            document.getElementById('globalPending').textContent = pending;
-            document.getElementById('globalCompleted').textContent = completed;
-            document.getElementById('globalTotal').textContent = total;
-            document.getElementById('globalProgress').textContent = progress + '%';
-            document.getElementById('globalProgressBar').style.width = progress + '%';
+            // Actualizar elementos solo si existen
+            const pendingEl = document.getElementById('globalPending');
+            const completedEl = document.getElementById('globalCompleted');
+            const totalEl = document.getElementById('globalTotal');
+            const progressEl = document.getElementById('globalProgress');
+            const progressBarEl = document.getElementById('globalProgressBar');
+            
+            if (pendingEl) pendingEl.textContent = pending;
+            if (completedEl) completedEl.textContent = completed;
+            if (totalEl) totalEl.textContent = total;
+            if (progressEl) progressEl.textContent = progress + '%';
+            if (progressBarEl) progressBarEl.style.width = progress + '%';
         }
         
         function searchAddresses() {
@@ -221,13 +234,16 @@ const firebaseConfig = {
         }
         
         function populateGlobalFilters() {
-            const centrals = [...new Set(allData.map(d => d.CENTRAL).filter(Boolean))].sort();
-            const pds = [...new Set(allData.map(d => d.PD).filter(Boolean))].sort();
-            const proveedores = [...new Set(allData.map(d => d.PROVEEDOR).filter(Boolean))].sort();
-            
             const centralSelect = document.getElementById('filterCentral');
             const pdSelect = document.getElementById('filterPd');
             const proveedorSelect = document.getElementById('filterProveedor');
+            
+            // Si los elementos no existen, salir sin error
+            if (!centralSelect || !pdSelect || !proveedorSelect) return;
+            
+            const centrals = [...new Set(allData.map(d => d.CENTRAL).filter(Boolean))].sort();
+            const pds = [...new Set(allData.map(d => d.PD).filter(Boolean))].sort();
+            const proveedores = [...new Set(allData.map(d => d.PROVEEDOR).filter(Boolean))].sort();
             
             centrals.forEach(c => centralSelect.innerHTML += `<option value="${c}">${c}</option>`);
             pds.forEach(p => pdSelect.innerHTML += `<option value="${p}">${p}</option>`);
